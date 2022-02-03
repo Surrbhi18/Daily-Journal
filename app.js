@@ -11,7 +11,7 @@ const contactContent = "Reach out to us anytime and we’ll happily answer your 
 const app = express()
 
 app.set('view engine', 'ejs')
-const port = 3000
+//const port = 3000
 
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static("public"))
@@ -95,8 +95,16 @@ app.post("/delete", function(req, res){
      });
   })
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-app.listen(port, () => {
+/*app.listen(port, () => {
 console.log(`Example app listening at http://localhost:${port}`)
-})
+})*/
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+
+app.listen(port, () => {
+console.log(`Example app Started Successfully:${port}`)
+})
 //ID:Daily-Journal Password:daily
