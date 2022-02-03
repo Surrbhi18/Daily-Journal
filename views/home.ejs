@@ -1,0 +1,18 @@
+<%- include('partials/header'); -%>
+<!-- <h1>Greetings!</h1> -->
+<h1><%= kindofDay %></h1>
+<p><%= stratingContent %></p>
+
+<% posts.forEach(function(post){ %>
+  <form action="/delete" method="post">
+    <h3><input type="radio" name="checkbox" value="<%=post._id%>" onchange="this.form.submit()"><%= post.title %></h3>
+       <p><%= post.content.substring(0, 100)%>
+       <a href="/post/<%= post.title %>">read more</a>
+   </p>
+  </form>
+<%  }) %>
+
+<%- include('partials/footer'); -%>
+
+
+<%# .substring(0, 100) %>
